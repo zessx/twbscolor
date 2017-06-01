@@ -27,7 +27,7 @@ $dropDown       : {{dropDown}};
               &:hover,  &:focus {
                 color: $colHighlight;
                 background-color: $bgHighlight; }}
-            > .divider {
+            &.divider {
               background-color: $bgHighlight;}}}}}
     > .active {
       > a, > a:hover, > a:focus {

@@ -30,7 +30,7 @@
 {{dropDown}}  color: {{colHighlight}};
 {{dropDown}}  background-color: {{bgHighlight}};
 {{dropDown}}}
-{{dropDown}}.navbar-default .navbar-nav > li > .dropdown-menu > li > .divider {
+{{dropDown}}.navbar-default .navbar-nav > li > .dropdown-menu > li.divider {
 {{dropDown}}  background-color: {{bgHighlight}};
 {{dropDown}}}
 .navbar-default .navbar-nav > .active > a,

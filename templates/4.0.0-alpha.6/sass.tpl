@@ -3,9 +3,8 @@ $bgHighlight    : {{bgHighlight}}
 $colDefault     : {{colDefault}}
 $colHighlight   : {{colHighlight}}
 $dropDown       : {{dropDown}}
-.navbar-default
+.navbar
   background-color: $bgDefault
-  border-color: $bgHighlight
   .navbar-brand
     color: $colDefault
     &:hover, &:focus
@@ -13,36 +12,34 @@ $dropDown       : {{dropDown}}
   .navbar-text
     color: $colDefault
   .navbar-nav
-    > li
-      > a
-        color: $colDefault
+    .nav-link
+      color: $colDefault
+      border-radius: .25rem
+      margin: 0 0.25em
+      &:not(.disabled)
         &:hover, &:focus
           color: $colHighlight
-      @if $dropDown
-        > .dropdown-menu
-          background-color: $bgDefault
-          > li
-            > a
-              color: $colDefault
-              &:hover, &:focus
-                color: $colHighlight
-                background-color: $bgHighlight
-            &.divider
-              background-color: $bgHighlight
-    > .active
-      > a, > a:hover, > a:focus
-        color: $colHighlight
-        background-color: $bgHighlight
-    > .open
-      > a, > a:hover, > a:focus
+    @if $dropDown
+      .dropdown-menu
+        background-color: $bgDefault
+        border-color: $bgHighlight
+        .dropdown-item
+          color: $colDefault
+          &:hover, &:focus, &.active
+            color: $colHighlight
+            background-color: $bgHighlight
+        .dropdown-divider
+          background-color: $bgHighlight
+    .nav-item.active, .nav-item.show
+      .nav-link, .nav-link:hover, .nav-link:focus
         color: $colHighlight
         background-color: $bgHighlight
   .navbar-toggle
     border-color: $bgHighlight
     &:hover, &:focus
       background-color: $bgHighlight
-    .icon-bar
-      background-color: $colDefault
+    .navbar-toggler-icon
+      color: $colDefault
   .navbar-collapse,
   .navbar-form
     border-color: $colDefault
@@ -51,12 +48,11 @@ $dropDown       : {{dropDown}}
     &:hover
       color: $colHighlight
 @media (max-width: 767px)
-  .navbar-default .navbar-nav .open .dropdown-menu
-    > li > a
+  .navbar .navbar-nav .open .dropdown-menu
+    .dropdown-item
       color: $colDefault
       &:hover, &:focus
         color: $colHighlight
-    > .active
-      > a, > a:hover, > a:focus
-        color: $colHighlight
-        background-color: $bgHighlight
+    .dropdown-item.active
+      color: $colHighlight
+      background-color: $bgHighlight

@@ -12,7 +12,7 @@
           &:hover,  &:focus {
             color: @colHighlight;
             background-color: @bgHighlight; }}
-        > .divider {
+        &.divider {
           background-color: @bgHighlight;}}}
   .open .dropdown-menu > .active {
     > a, > a:hover, > a:focus {

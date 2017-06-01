@@ -9,11 +9,15 @@ Options -Indexes +FollowSymLinks
 
   RewriteCond %{REQUEST_FILENAME} -d [OR]
   RewriteCond %{REQUEST_FILENAME} -f
-  RewriteRule .* - [S=4]
-  RewriteRule ^(scss|sass|less|css)/([\da-f]{25})$ index.php?tab=$1&params=$2 [L,QSA]
-  RewriteRule ^([\da-f]{25})$                      index.php?params=$1 [L,QSA]
-  RewriteRule ^(scss|sass|less|css)$               index.php?tab=$1 [L,QSA]
-  RewriteRule .*                                   index.php [L,QSA,R=301]
+  RewriteRule .* - [S=8]
+  RewriteRule ^(\d\.[^/]+)/(scss|sass|less|css)/([\da-f]{25})$ index.php?version=$1&tab=$2&params=$3 [L,QSA]
+  RewriteRule ^(\d\.[^/]+)/(scss|sass|less|css)$               index.php?version=$1&tab=$2 [L,QSA]
+  RewriteRule ^(\d\.[^/]+)/([\da-f]{25})$                      index.php?version=$1&params=$2 [L,QSA]
+  RewriteRule ^(\d\.[^/]+)$                                    index.php?version=$1 [L,QSA]
+  RewriteRule ^(scss|sass|less|css)/([\da-f]{25})$             index.php?tab=$1&params=$2 [L,QSA]
+  RewriteRule ^(scss|sass|less|css)$                           index.php?tab=$1 [L,QSA]
+  RewriteRule ^([\da-f]{25})$                                  index.php?params=$1 [L,QSA]
+  RewriteRule .*                                               index.php [L,QSA,R=301]
 
   # Errors
   ErrorDocument 404 /
