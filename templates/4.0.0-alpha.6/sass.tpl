@@ -5,7 +5,6 @@ $colHighlight   : {{colHighlight}}
 $dropDown       : {{dropDown}}
 .navbar
   background-color: $bgDefault
-  border-color: $bgHighlight
   .navbar-brand
     color: $colDefault
     &:hover, &:focus
@@ -23,7 +22,7 @@ $dropDown       : {{dropDown}}
     @if $dropDown
       .dropdown-menu
         background-color: $bgDefault
-        border-color: {{bgHighlight}}
+        border-color: $bgHighlight
         .dropdown-item
           color: $colDefault
           &:hover, &:focus, &.active

@@ -60,31 +60,19 @@ $dropDown     = substr($params, 24, 1);
         var version = $('#version').val();
         var lang    = $('.nav-tabs .active [data-tab]').first().data('tab')
 
+        // Permalink
         var link = window.location.protocol +'//'+ window.location.hostname + BASE + version +'/'+ lang + '/' + params;
         $('.permalink').attr('href', link).find('pre').html(link);
+
+        // Iframe
         $('iframe:first').attr('src', BASE +'navbar.php?version='+ version +'&params='+ params);
-      }
 
-      $(function() {
-        $('input[type="color"]').spectrum({
-          preferredFormat: "hex",
-          showPalette: false,
-          showSelectionPalette: false,
-          allowEmpty: false,
-          showInput: true,
-        });
-      });
+        // Assets links
+        var html  = '//maxcdn.bootstrapcdn.com/bootstrap/'+ version +'/css/bootstrap.min.css\n';
+            html += '//maxcdn.bootstrapcdn.com/bootstrap/'+ version +'/js/bootstrap.min.js';
+        $('#assets pre').html(html);
 
-      $(document).on('click', 'navbar a', function(ev) {
-        ev.preventDefault();
-        return false;
-      });
-
-      $(document).on('click', '[data-tab]', updateLink);
-
-      $(document).on('change', '.form-generate', function(ev) {
-        updateLink();
-
+        // Code
         var callback = function(lang) {
           return function(data, textStatus, jqXHR) {
             data = data.replace(/\{\{bgDefault\}\}/g, $('#bd').val())
@@ -103,17 +91,30 @@ $dropDown     = substr($params, 24, 1);
             $('#'+ lang +' pre').html(data);
           };
         };
-
         var langs = ['scss', 'sass', 'less', 'css'];
         for (i = 0; i < langs.length; i++) {
-          $.get(window.location.protocol +'//'+ window.location.hostname + BASE +'templates/<?php print $version ?>/'+ langs[i] +'.tpl', callback(langs[i]));
+          $.get(window.location.protocol +'//'+ window.location.hostname + BASE +'templates/'+ version +'/'+ langs[i] +'.tpl', callback(langs[i]));
         }
+      }
 
+      $(function() {
+        $('input[type="color"]').spectrum({
+          preferredFormat: "hex",
+          showPalette: false,
+          showSelectionPalette: false,
+          allowEmpty: false,
+          showInput: true,
+        });
       });
 
-      $(document).on('ready', function() {
-        $('.form-generate').first().trigger('change');
-      })
+      $(document).on('click', 'navbar a', function(ev) {
+        ev.preventDefault();
+        return false;
+      });
+
+      $(document).on('click', '[data-tab]', updateLink);
+      $(document).on('change', '.form-generate', updateLink);
+      $(document).on('ready', updateLink);
 
     </script>
   </head>
@@ -177,7 +178,7 @@ $dropDown     = substr($params, 24, 1);
           </div>
         </form>
 
-        <iframe src="#" width="800" height="230">
+        <iframe src="#" width="992" height="230">
           <p>Your browser doesn't support iframes... seriously?!</p>
         </iframe>
 

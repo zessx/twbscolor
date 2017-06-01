@@ -5,7 +5,6 @@ $colHighlight   : {{colHighlight}};
 $dropDown       : {{dropDown}};
 .navbar {
   background-color: $bgDefault;
-  border-color: $bgHighlight;
   .navbar-brand {
     color: $colDefault;
     &:hover, &:focus {
@@ -14,16 +13,16 @@ $dropDown       : {{dropDown}};
     color: $colDefault; }
   .navbar-nav {
     .nav-link {
-      color: $colDefault:
-      border-radius: .25rem:
-      margin: 0 0.25em:
+      color: $colDefault;
+      border-radius: .25rem;
+      margin: 0 0.25em;
       &:not(.disabled) {
         &:hover, &:focus {
           color: $colHighlight; }}}
     @if ($dropDown) {
       .dropdown-menu {
         background-color: $bgDefault;
-        border-color: {{bgHighlight}};
+        border-color: $bgHighlight;
         .dropdown-item {
           color: $colDefault;
           &:hover, &:focus, &.active {
