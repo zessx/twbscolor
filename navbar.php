@@ -35,6 +35,7 @@ $dropDown     = isset($_GET['params']) ? substr($_GET['params'], 24, 1) : 0;
 			?>
 		</style>
 		<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+                <script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
 		<script src="//maxcdn.bootstrapcdn.com/bootstrap/<?php print $version ?>/js/bootstrap.min.js"></script>
 	</head>
 	<body>

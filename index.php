@@ -73,13 +73,13 @@ $dropDown     = substr($params, 24, 1);
         $('#assets pre').html(html);
 
         // Code
-        var callback = function(lang) {
+        var callback = function(block) {
           return function(data, textStatus, jqXHR) {
             data = data.replace(/\{\{bgDefault\}\}/g, $('#bd').val())
                        .replace(/\{\{bgHighlight\}\}/g, $('#bh').val())
                        .replace(/\{\{colDefault\}\}/g, $('#cd').val())
                        .replace(/\{\{colHighlight\}\}/g, $('#ch').val());
-            if (lang == 'css') {
+            if (block == 'css') {
               if($('#dd').is(':checked')) {
                 data = data.replace(/\{\{dropDown\}\}/g, '');
               } else {
@@ -88,12 +88,12 @@ $dropDown     = substr($params, 24, 1);
             } else {
               data = data.replace(/\{\{dropDown\}\}/g, ($('#dd').is(':checked') ? 'true' : 'false'));
             }
-            $('#'+ lang +' pre').html(data);
+            $('#'+ block +' pre').html(data);
           };
         };
-        var langs = ['scss', 'sass', 'less', 'css'];
-        for (i = 0; i < langs.length; i++) {
-          $.get(window.location.protocol +'//'+ window.location.hostname + BASE +'templates/'+ version +'/'+ langs[i] +'.tpl', callback(langs[i]));
+        var blocks = ['assets', 'scss', 'sass', 'less', 'css'];
+        for (i = 0; i < blocks.length; i++) {
+          $.get(window.location.protocol +'//'+ window.location.hostname + BASE +'templates/'+ version +'/'+ blocks[i] +'.tpl', callback(blocks[i]));
         }
       }
 
@@ -195,8 +195,7 @@ $dropDown     = substr($params, 24, 1);
     <section id="assets">
       <div class="container">
         <h1>Include Bootstrap assets</h1>
-        <pre>//maxcdn.bootstrapcdn.com/bootstrap/<?php print $version ?>/css/bootstrap.min.css
-//maxcdn.bootstrapcdn.com/bootstrap/<?php print $version ?>/js/bootstrap.min.js</pre>
+        <pre></pre>
       </div>
     </section>
 
