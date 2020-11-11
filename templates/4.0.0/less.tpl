@@ -39,7 +39,7 @@
       .nav-link, .nav-link:hover, .nav-link:focus {
         color: @colHighlight;
         background-color: @bgHighlight; }}}
-  .navbar-toggle {
+  .navbar-toggler {
     border-color: @bgHighlight;
     &:hover, &:focus {
       background-color: @bgHighlight; }

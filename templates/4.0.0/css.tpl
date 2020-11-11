@@ -52,14 +52,14 @@
   color: {{colHighlight}};
   background-color: {{bgHighlight}};
 }
-.navbar .navbar-toggle {
+.navbar .navbar-toggler {
   border-color: {{bgHighlight}};
 }
-.navbar .navbar-toggle:hover,
-.navbar .navbar-toggle:focus {
+.navbar .navbar-toggler:hover,
+.navbar .navbar-toggler:focus {
   background-color: {{bgHighlight}};
 }
-.navbar .navbar-toggle .navbar-toggler-icon {
+.navbar .navbar-toggler .navbar-toggler-icon {
   color: {{colDefault}};
 }
 .navbar .navbar-collapse,
